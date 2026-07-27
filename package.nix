@@ -21,7 +21,7 @@
 
 stdenv.mkDerivation rec {
   pname = "vintagestory";
-  version = "1.21.6";
+  version = "1.22.5";
 
   src = fetchurl {
     url = "https://host.fplay.su/dist/vs/fplay.php?v=stable&s=vs_client_linux-x64_${version}.tar.gz";
