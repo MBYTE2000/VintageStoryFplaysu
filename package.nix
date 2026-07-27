@@ -24,8 +24,8 @@ stdenv.mkDerivation rec {
   version = "1.22.5";
 
   src = fetchurl {
-    url = "https://host.fplay.su/dist/vs/fplay.php?v=stable&s=vs_client_linux-x64_${version}.tar.gz";
-    hash = "sha256-MqlyAkXLEZ8DEnXvQhVx65Pm6ksHesVHK8oPMNOCxKU=";
+    url = "https://fplay.org/get/vs?v=unstable&s=vs_client_linux-x64_${version}.tar.gz";
+    hash = "";  # Замените на правильный хэш после первой сборки
   };
 
   nativeBuildInputs = [
