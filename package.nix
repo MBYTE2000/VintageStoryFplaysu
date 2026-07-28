@@ -16,7 +16,7 @@
   libglvnd,
   pipewire,
   libpulseaudio,
-  dotnet-runtime_8,
+  dotnet-runtime_10,
 }:
 
 stdenv.mkDerivation rec {
@@ -90,12 +90,12 @@ stdenv.mkDerivation rec {
   '';
 
   preFixup = ''
-    makeWrapper ${dotnet-runtime_8}/bin/dotnet $out/bin/vintagestory \
+    makeWrapper ${dotnet-runtime_10}/bin/dotnet $out/bin/vintagestory \
       --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
       --set-default mesa_glthread true \
       --add-flags $out/share/vintagestory/Vintagestory.dll
 
-    makeWrapper ${dotnet-runtime_8}/bin/dotnet $out/bin/vintagestory-server \
+    makeWrapper ${dotnet-runtime_10}/bin/dotnet $out/bin/vintagestory-server \
       --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
       --set-default mesa_glthread true \
       --add-flags $out/share/vintagestory/VintagestoryServer.dll
