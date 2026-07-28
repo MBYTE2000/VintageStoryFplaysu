@@ -24,9 +24,13 @@ stdenv.mkDerivation rec {
   version = "1.22.5";
 
   src = fetchurl {
-    url = "https://fplay.org/get/vs?v=unstable&s=vs_client_linux-x64_${version}.tar.gz";
-    hash = "";  # Замените на правильный хэш после первой сборки
+    url = "https://fplay.org/get/vs?v=stable&s=vs_client_linux-x64_${version}.tar.gz";
+    curlOptsList = [ "--location" ];
+    sha256 = "S6lWlkTxW8j4R1jx1uqf3jwuQyh+GGgslrspo8MAJGE=";
   };
+
+  # Если не работает — используйте локальный файл:
+  # src = ./vs_client_linux-x64_1.22.5.tar.gz;
 
   nativeBuildInputs = [
     makeWrapper
@@ -58,8 +62,8 @@ stdenv.mkDerivation rec {
       name = "vintagestory";
       desktopName = "Vintage Story";
       exec = "vintagestory";
-      icon = "vintagestory";
-      comment = "Innovate and explore in a sandbox world";
+       icon = "vintagestory";
+       comment = "Innovate and explore in a sandbox world";
       categories = [ "Game" ];
     })
 
@@ -79,7 +83,7 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/share/vintagestory $out/bin $out/share/pixmaps $out/share/fonts/truetype
     cp -r * $out/share/vintagestory
-    cp $out/share/vintagestory/assets/gameicon.xpm $out/share/pixmaps/vintagestory.xpm
+    cp $out/share/vintagestory/assets/gameicon.png $out/share/pixmaps/vintagestory.png
     cp $out/share/vintagestory/assets/game/fonts/*.ttf $out/share/fonts/truetype
 
     runHook postInstall
